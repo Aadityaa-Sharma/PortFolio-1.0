@@ -44,7 +44,7 @@
                 },
                 {
                     "name": "Express",
-                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+                    "logo": "/expressjs.svg"
                 },
                 {
                     "name": "Python",
@@ -100,7 +100,7 @@
                 },
                 {
                     "name": "Vercel",
-                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg"
+                    "logo": "/Vercel.svg"
                 }
             ]
         }

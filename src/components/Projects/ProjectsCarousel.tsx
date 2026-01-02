@@ -52,10 +52,16 @@ export const ProjectsCarousel = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Left: Description & Links */}
                 <div className="space-y-6 order-2 lg:order-1">
-                    <div className="flex items-center gap-3 text-sm font-mono text-primary">
+                    <div className="flex flex-wrap items-center gap-3 text-sm font-mono text-primary">
                         <span>{currentProject.category}</span>
                         <span className="w-1 h-1 rounded-full bg-primary" />
                         <span>{currentProject.year}</span>
+                        {currentProject.role && (
+                            <>
+                                <span className="w-1 h-1 rounded-full bg-primary" />
+                                <span>{currentProject.role}</span>
+                            </>
+                        )}
                     </div>
 
                     <h3 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
@@ -79,17 +85,27 @@ export const ProjectsCarousel = () => {
                     </div>
 
                     <div className="flex flex-wrap gap-4 pt-4">
-                        {currentProject.links?.live && (
-                            <a
-                                href={currentProject.links.live}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn-glow flex items-center gap-2"
-                            >
+                        {/* Primary Button Strategy */}
+                        {currentProject.deployed ? (
+                            (currentProject.links?.live || currentProject.links?.demo) && (
+                                <a
+                                    href={currentProject.links.live || currentProject.links.demo}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn-glow flex items-center gap-2"
+                                >
+                                    <ExternalLink size={18} />
+                                    Live Demo
+                                </a>
+                            )
+                        ) : (
+                            <div className="btn-outline opacity-50 cursor-default flex items-center gap-2">
                                 <ExternalLink size={18} />
-                                Live Demo
-                            </a>
+                                Run Locally
+                            </div>
                         )}
+
+                        {/* Always Display Source Code */}
                         {currentProject.links?.github && (
                             <a
                                 href={currentProject.links.github}
@@ -135,8 +151,8 @@ export const ProjectsCarousel = () => {
                                     key={index}
                                     onClick={() => setCurrentIndex(index)}
                                     className={`transition-all duration-300 rounded-full ${currentIndex === index
-                                            ? 'w-8 h-2 bg-primary'
-                                            : 'w-2 h-2 bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                                        ? 'w-8 h-2 bg-primary'
+                                        : 'w-2 h-2 bg-muted-foreground/30 hover:bg-muted-foreground/50'
                                         }`}
                                 />
                             ))}

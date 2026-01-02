@@ -27,6 +27,7 @@ export interface AboutData {
     experience: string;
     technologies: string;
     contributions: string;
+    commits?: string;
   };
   highlights: string[];
 }
@@ -54,6 +55,7 @@ export interface ProjectLink {
   github?: string;
   live?: string;
   demo?: string;
+  local?: string;
 }
 
 export interface Project {
@@ -67,6 +69,7 @@ export interface Project {
   technologies: string[];
   image: string;
   featured: boolean;
+  deployed: boolean;
   links: ProjectLink;
   timeline?: string;
 }

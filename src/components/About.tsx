@@ -31,9 +31,9 @@ export const About = () => {
           </div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {Object.entries(data.stats).map(([key, value]) => (
-              <div key={key} className="glass-card text-center">
+              <div key={key} className="glass-card text-center flex flex-col justify-center py-6">
                 <div className="text-4xl md:text-5xl font-heading font-bold gradient-text mb-2">
                   {value}
                 </div>
@@ -56,7 +56,15 @@ export const About = () => {
               >
                 <div className="flex-1">
                   <h4 className="text-xl font-heading font-semibold text-foreground">{edu.degree}</h4>
-                  <p className="text-muted-foreground font-body mt-1">{edu.institution}</p>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-muted-foreground font-body">
+                    <span>{edu.institution}</span>
+                    {edu.location && (
+                      <>
+                        <span className="w-1 h-1 rounded-full bg-border" />
+                        <span className="text-sm italic">{edu.location}</span>
+                      </>
+                    )}
+                  </div>
                   {edu.specialization && (
                     <p className="text-sm text-primary font-mono mt-1">{edu.specialization}</p>
                   )}

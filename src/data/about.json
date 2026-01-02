@@ -12,29 +12,41 @@
     "education": [
         {
             "degree": "B.Tech, Computer Science",
-            "institution": "Your University Name",
-            "specialization": "Software Engineering",
-            "duration": "2020-2024",
-            "cgpa": "9.08 CGPA",
-            "location": "City, State"
+            "institution": "KIT's College of Engineering",
+            "specialization": "Computer Science and Business Systems",
+            "duration": "2023-2027",
+            "cgpa": "8.6 CGPA",
+            "location": "Kolhapur, Maharashtra"
         },
         {
-            "degree": "High Secondary Certificate",
-            "institution": "School Name",
-            "board": "Board Name",
-            "year": "2020",
-            "percentage": "85%"
+            "degree": "Higher Secondary",
+            "institution": "Kishore G.K School",
+            "board": "Gujarat Board",
+            "year": "2023",
+            "percentage": "60%",
+            "location": "Ahmedabad, Gujarat"
+        },
+        {
+            "degree": "Senior Secondary",
+            "institution": "Amrut School",
+            "board": "Gujarat Board",
+            "year": "2021",
+            "percentage": "78%",
+            "location": "Ahmedabad, Gujarat"
         }
     ],
     "stats": {
-        "projects": "50+",
-        "experience": "15+",
-        "technologies": "3",
-        "contributions": "100+"
+        "projects": "8+",
+        "experience": "3 yrs",
+        "technologies": "20+",
+        "contributions": "10+",
+        "commits": "150+"
     },
     "highlights": [
         "Full-stack developer specializing in modern web technologies",
         "Open source contributor",
-        "Building intelligent web solutions"
+        "Building intelligent web solutions",
+        "Passionate about UI/UX design",
+        "Love solving DSA problems"
     ]
 }

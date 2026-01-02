@@ -11,17 +11,9 @@
         {
             "id": "linkedin",
             "platform": "LinkedIn",
-            "url": "https://linkedin.com/in/yourusername",
+            "url": "https://www.linkedin.com/in/adityaaa-shaaarma/",
             "icon": "linkedin",
             "color": "#0A66C2",
-            "hoverColor": "#4A90FF"
-        },
-        {
-            "id": "twitter",
-            "platform": "Twitter",
-            "url": "https://twitter.com/yourusername",
-            "icon": "twitter",
-            "color": "#1DA1F2",
             "hoverColor": "#4A90FF"
         },
         {

@@ -1,45 +1,88 @@
 {
     "featured": [
         {
-            "id": "project-1",
-            "title": "Project Name",
-            "shortDesc": "One-line description",
-            "fullDescription": "Detailed multi-line description explaining what the project does, the problems it solves, and the technologies used. Make it compelling.",
-            "year": "2024",
-            "category": "Full Stack",
-            "role": "Software Engineering Intern / Lead Developer",
+            "id": "image-search-ai",
+            "title": "Local Image Search AI",
+            "shortDesc": "Offline AI-powered image search using natural language queries.",
+            "fullDescription": "A fully local, offline semantic image search engine built using BLIP and CLIP models. The system automatically generates captions, embeddings, and keywords for images, then allows users to search their image collection using natural language via frontend. It combines CLIP-based vector similarity with BLIP-generated keyword matching to improve accuracy, while remaining completely private and API-free. Designed to scale to hundreds or thousands of images with efficient batch processing and interactive search.",
+            "year": "2025",
+            "category": "AI / Computer Vision",
+            "role": "Independent Developer",
+            "deployed": false,
             "technologies": [
-                "React",
-                "Node.js",
-                "MongoDB",
-                "Tailwind"
+                "Python",
+                "PyTorch",
+                "Transformers",
+                "BLIP",
+                "CLIP",
+                "NumPy",
+                "Pillow",
+                "Matplotlib",
+                "tqdm"
             ],
-            "image": "/images/projects/project1.png",
+            "image": "/local-image-search-ai.jpg",
             "featured": true,
             "links": {
-                "github": "https://github.com/username/repo",
-                "live": "https://project-url.com",
-                "demo": "https://demo-url.com"
+                "github": "https://github.com/Aadityaa-Sharma/local-image-search-ai"
             },
-            "timeline": "Jan 2024 - Present"
-        }
-    ],
-    "other": [
+            "timeline": "2025"
+        },
         {
-            "id": "project-2",
-            "title": "Another Project",
-            "shortDesc": "Brief description",
-            "year": "2023",
-            "category": "Frontend",
+            "id": "portfolio-website",
+            "title": "Portfolio-Website 1.0",
+            "shortDesc": "A high-performance, JSON-driven personal brand experience.",
+            "fullDescription": "A modern, ultra-minimal portfolio website built with a focus on bold typography and organic interactions. The site features a fully decoupled data architecture where all content is managed via JSON files. Key features include custom-engineered 'green bush' growing animations on tech tiles, a cinematic project carousel, and a refined dark aesthetic using Space Grotesk and Inter typefaces. Built for speed and visual impact, it eliminates traditional scroll-based hiding in favor of immediate content visibility and glassmorphism UI elements.",
+            "year": "2025",
+            "category": "Web Development / UI Design",
+            "role": "Independent Developer",
+            "deployed": true,
             "technologies": [
                 "React",
-                "TypeScript"
+                "TypeScript",
+                "Tailwind CSS",
+                "Vite",
+                "Framer Motion",
+                "Lucide React",
+                "Shadcn UI",
+                "Radix UI",
+                "JSON Data Architecture"
             ],
-            "image": "/images/projects/project2.png",
-            "featured": false,
+            "image": "/portfolio.jpg",
+            "featured": true,
             "links": {
-                "github": "https://github.com/username/repo2"
-            }
+                "github": "https://github.com/Aadityaa-Sharma/PortFolio-1.0",
+                "live": "https://aadityaa-sharma.vercel.app"
+            },
+            "timeline": "2025"
+        },
+        {
+            "id": "voltex-racing-ebaja",
+            "title": "E-BAJA 2025",
+            "shortDesc": "A striking, hand-crafted website for an electric racing team competing in BAJA SAEINDIA 2025.",
+            "fullDescription": "A professional, award-worthy website built for VOLTEX Racing, an e-BAJA team competing in BAJA SAEINDIA 2025. The design philosophy rejects templated aesthetics in favor of asymmetric, bold layouts with purposeful negative space. Features include a fullscreen video hero with automatic smooth-scroll behavior, an asymmetric mission statement with vertical typography, split-screen vehicle specifications with blueprint aesthetics. Built with pure vanilla technologies for maximum performance, featuring custom geometric elements, racing-inspired typography using Bebas Neue and JetBrains Mono, and a strict black-white-electric blue color palette.",
+            "year": "2025",
+            "category": "Web Development / UI Design",
+            "role": "Independent Developer",
+            "deployed": true,
+            "technologies": [
+                "HTML5",
+                "CSS3",
+                "Vanilla JavaScript",
+                "CSS Custom Properties",
+                "BEM Methodology",
+                "Intersection Observer API",
+                "CSS Animations",
+                "Responsive Design",
+                "WCAG Accessibility"
+            ],
+            "image": "/voltex-racing.jpg",
+            "featured": true,
+            "links": {
+                "github": "https://github.com/username/voltex-racing-ebaja",
+                "live": "https://e-baja.vercel.app"
+            },
+            "timeline": "2025"
         }
-    ]
+    ],
+    "other": []
 }
