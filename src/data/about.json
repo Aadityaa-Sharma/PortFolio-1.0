@@ -1,0 +1,40 @@
+{
+    "hero": {
+        "title": "DEVELOPER & CREATOR",
+        "subtitle": "Software Engineer",
+        "description": "Crafting digital experiences that blend cutting-edge tech with Windows and cross-platform tools"
+    },
+    "bio": {
+        "intro": "I am a passionate developer who loves to explore new technologies and build innovative solutions. My journey in tech is driven by curiosity and a desire to create impactful software.",
+        "journey": "Starting my journey with a strong foundation in computer science, I have explored various domains including web development, app development, and system programming. I believe in continuous learning and applying my skills to solve real-world problems.",
+        "current": "Currently, I am focused on building intelligent web solutions and enhancing my expertise in full-stack development."
+    },
+    "education": [
+        {
+            "degree": "B.Tech, Computer Science",
+            "institution": "Your University Name",
+            "specialization": "Software Engineering",
+            "duration": "2020-2024",
+            "cgpa": "9.08 CGPA",
+            "location": "City, State"
+        },
+        {
+            "degree": "High Secondary Certificate",
+            "institution": "School Name",
+            "board": "Board Name",
+            "year": "2020",
+            "percentage": "85%"
+        }
+    ],
+    "stats": {
+        "projects": "50+",
+        "experience": "15+",
+        "technologies": "3",
+        "contributions": "100+"
+    },
+    "highlights": [
+        "Full-stack developer specializing in modern web technologies",
+        "Open source contributor",
+        "Building intelligent web solutions"
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "featured": [
+        {
+            "id": "project-1",
+            "title": "Project Name",
+            "shortDesc": "One-line description",
+            "fullDescription": "Detailed multi-line description explaining what the project does, the problems it solves, and the technologies used. Make it compelling.",
+            "year": "2024",
+            "category": "Full Stack",
+            "role": "Software Engineering Intern / Lead Developer",
+            "technologies": [
+                "React",
+                "Node.js",
+                "MongoDB",
+                "Tailwind"
+            ],
+            "image": "/images/projects/project1.png",
+            "featured": true,
+            "links": {
+                "github": "https://github.com/username/repo",
+                "live": "https://project-url.com",
+                "demo": "https://demo-url.com"
+            },
+            "timeline": "Jan 2024 - Present"
+        }
+    ],
+    "other": [
+        {
+            "id": "project-2",
+            "title": "Another Project",
+            "shortDesc": "Brief description",
+            "year": "2023",
+            "category": "Frontend",
+            "technologies": [
+                "React",
+                "TypeScript"
+            ],
+            "image": "/images/projects/project2.png",
+            "featured": false,
+            "links": {
+                "github": "https://github.com/username/repo2"
+            }
+        }
+    ]
+}

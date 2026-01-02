@@ -1,66 +1,67 @@
-import { motion } from 'framer-motion';
-import { useInView } from '@/hooks/useInView';
-import { Github, Linkedin, Twitter, Mail, Dribbble, Figma } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, Globe, FileText, Download, ExternalLink } from 'lucide-react';
+import socialsData from '@/data/socials.json';
+import { SocialsData } from '@/types';
 
-const socials = [
-  { name: 'GitHub', icon: Github, url: '#', color: 'electric' },
-  { name: 'LinkedIn', icon: Linkedin, url: '#', color: 'coral' },
-  { name: 'Twitter', icon: Twitter, url: '#', color: 'acid' },
-  { name: 'Email', icon: Mail, url: 'mailto:adityaasharm@gmail.com', color: 'violet' },
-  { name: 'Dribbble', icon: Dribbble, url: '#', color: 'gold' },
-  { name: 'Figma', icon: Figma, url: '#', color: 'electric' },
-];
+const data = socialsData as unknown as SocialsData;
 
-const colorMap: Record<string, { bg: string; border: string }> = {
-  electric: { bg: 'group-hover:bg-electric', border: 'group-hover:border-electric' },
-  coral: { bg: 'group-hover:bg-coral', border: 'group-hover:border-coral' },
-  acid: { bg: 'group-hover:bg-acid', border: 'group-hover:border-acid' },
-  violet: { bg: 'group-hover:bg-violet', border: 'group-hover:border-violet' },
-  gold: { bg: 'group-hover:bg-gold', border: 'group-hover:border-gold' },
+const iconMap: Record<string, any> = {
+  github: Github,
+  linkedin: Linkedin,
+  twitter: Twitter,
+  mail: Mail,
+  globe: Globe,
+  'file-text': FileText,
 };
 
 export const Socials = () => {
-  const { ref, isInView } = useInView({ threshold: 0.1 });
-
   return (
-    <div
-      ref={ref as React.RefObject<HTMLDivElement>}
-      className="w-full flex items-center bg-transparent overflow-hidden py-20"
-    >
-      <div className="w-full px-6 lg:px-12">
+    <div className="w-full py-32 overflow-hidden relative">
+      <div className="max-w-[1400px] px-8 lg:px-16 mx-auto">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="mb-16"
-        >
-          <h2 className="section-title">LINKS</h2>
-          <h2 className="section-title-filled">LINKS</h2>
-        </motion.div>
+        <div className="mb-16 text-center">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold leading-[0.9] tracking-tight">
+            <span className="text-foreground/20">Connect</span>
+            <br />
+            <span className="text-foreground">With Me</span>
+          </h2>
+        </div>
 
-        {/* Social Cards Grid */}
-        <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
-          {socials.map((social, index) => (
-            <motion.a
-              key={social.name}
-              href={social.url}
-              target={social.url.startsWith('mailto') ? undefined : '_blank'}
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 40, rotate: -5 }}
-              animate={isInView ? { opacity: 1, y: 0, rotate: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -15, rotate: 3 }}
-              className={`social-card group border ${colorMap[social.color].border}`}
-              style={{ marginTop: index % 2 === 1 ? '30px' : '0' }}
-            >
-              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${colorMap[social.color].bg}`} />
-              <social.icon className="relative z-10 w-10 h-10 text-foreground group-hover:text-background transition-colors duration-300" />
-              <span className="relative z-10 text-sm font-mono text-foreground group-hover:text-background transition-colors duration-300">
-                {social.name}
-              </span>
-            </motion.a>
-          ))}
+        {/* Links Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+          {data.links.map((social) => {
+            const Icon = iconMap[social.icon] || Globe;
+
+            return (
+              <a
+                key={social.id}
+                href={social.url}
+                target={social.id === 'resume' ? '_self' : '_blank'}
+                rel="noopener noreferrer"
+                download={social.download || false}
+                className="group glass-card !p-6 flex flex-col items-center justify-center gap-4 text-center hover:scale-105 transition-transform duration-300"
+              >
+                <div className="p-4 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-background transition-all duration-300">
+                  <Icon size={24} />
+                </div>
+
+                <span className="text-sm font-body font-medium text-foreground/80 group-hover:text-foreground transition-colors">
+                  {social.platform}
+                </span>
+
+                {social.download && (
+                  <div className="absolute top-3 right-3 p-2 rounded-full bg-primary/10 text-primary opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <Download size={12} />
+                  </div>
+                )}
+
+                {!social.download && (
+                  <div className="absolute top-3 right-3 p-2 rounded-full bg-primary/10 text-primary opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <ExternalLink size={12} />
+                  </div>
+                )}
+              </a>
+            );
+          })}
         </div>
       </div>
     </div>

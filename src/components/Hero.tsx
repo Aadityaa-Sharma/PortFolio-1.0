@@ -1,121 +1,108 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import heroData from '@/data/hero.json';
 
 export const Hero = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
   return (
-    <div ref={containerRef} className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Grain Overlay */}
-      <div className="grain-overlay" />
+    <div className="relative w-full min-h-screen flex items-center overflow-hidden">
+      {/* Background Grid */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px'
+        }}
+      />
 
-      {/* Floating Geometric Shapes */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute border border-foreground/5"
-            style={{
-              width: `${100 + i * 80}px`,
-              height: `${100 + i * 80}px`,
-              left: `${10 + i * 15}%`,
-              top: `${20 + (i % 3) * 20}%`,
-              rotate: i * 15,
-            }}
-            animate={{
-              rotate: [i * 15, i * 15 + 360],
-              y: [0, -30, 0],
-            }}
-            transition={{
-              rotate: { duration: 40 + i * 10, repeat: Infinity, ease: 'linear' },
-              y: { duration: 4 + i, repeat: Infinity, ease: 'easeInOut' },
-            }}
-          />
-        ))}
-      </div>
+      {/* Gradient Accent */}
+      <div
+        className="absolute top-0 right-0 w-1/2 h-full opacity-30 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at top right, hsl(195 100% 50% / 0.2) 0%, transparent 50%)'
+        }}
+      />
 
-      <div className="relative z-10 w-full">
-        <div className="w-full overflow-hidden px-6 lg:px-12">
-          {/* Overline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-sm font-mono text-primary tracking-[0.3em] uppercase mb-8"
-          >
-            B.Tech • Full-Stack • Creative
-          </motion.p>
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 lg:px-16 py-20">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left: Text Content */}
+          <div className="space-y-8">
+            {/* Name Badge */}
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-primary/30 bg-primary/5">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-sm font-mono text-primary">Available for work</span>
+            </div>
 
-          {/* Main Title - Marquee effect */}
-          <div className="mb-6 w-full overflow-hidden text-center md:text-left">
-            <motion.div
-              initial={{ x: -100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold leading-[0.9] tracking-tighter">
-                <span className="text-white">DEVE</span>
-                <span className="text-blue-500">LOPER</span>
+            {/* Main Title */}
+            <div className="space-y-4">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-bold leading-tight tracking-tight">
+                <span className="text-foreground">Hi, I'm </span>
+                <span className="gradient-text">{heroData.name.split(' ')[0]}</span>
               </h1>
-            </motion.div>
-          </div>
+              <p className="text-2xl lg:text-3xl font-heading font-semibold text-muted-foreground">
+                {heroData.title}
+              </p>
+            </div>
 
-          <div className="mb-12 w-full overflow-hidden text-center md:text-right">
-            <motion.div
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            >
-              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold leading-[0.9] tracking-tighter">
-                <span className="text-blue-500">&</span>
-                <span className="text-white ml-2">CREA</span>
-                <span className="text-blue-500">TOR</span>
-              </h1>
-            </motion.div>
-          </div>
-
-          {/* Description */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col md:flex-row md:items-end justify-between gap-8 mt-20"
-          >
-            <p className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              Crafting digital experiences that blend cutting-edge technology with bold creative vision.
+            {/* Description */}
+            <p className="text-lg text-muted-foreground max-w-lg leading-relaxed font-body">
+              {heroData.description}
             </p>
 
-            <motion.button
-              onClick={() => {
-                const el = document.querySelector('#projects');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="btn-primary self-start"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              View Work
-            </motion.button>
-          </motion.div>
+            {/* Tech Highlights */}
+            <div className="flex flex-wrap gap-3">
+              {heroData.highlights.map((item, i) => (
+                <span
+                  key={i}
+                  className="px-4 py-2 rounded-lg text-sm font-mono bg-muted text-foreground border border-border"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4 pt-4">
+              <a
+                href={heroData.cta.primary.link}
+                className="btn-glow"
+              >
+                {heroData.cta.primary.text}
+              </a>
+              <a
+                href={heroData.cta.secondary.link}
+                className="btn-outline"
+              >
+                {heroData.cta.secondary.text}
+              </a>
+            </div>
+          </div>
+
+          {/* Right: Visual Element */}
+          <div className="hidden lg:flex items-center justify-center">
+            <div className="relative w-80 h-80">
+              {/* Animated rings */}
+              <div className="absolute inset-0 border-2 border-primary/20 rounded-full animate-pulse" />
+              <div className="absolute inset-4 border border-primary/30 rounded-full" style={{ animationDelay: '0.5s' }} />
+              <div className="absolute inset-8 border border-primary/40 rounded-full" />
+
+              {/* Center content */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl font-heading font-bold gradient-text">{'</>'}</div>
+                  <div className="text-sm font-mono text-muted-foreground mt-2">Code & Create</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-      >
-        <span className="text-xs font-mono tracking-[0.3em] text-muted-foreground uppercase">
-          Scroll
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-px h-12 bg-gradient-to-b from-primary to-transparent"
-        />
-      </motion.div>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <span className="text-xs font-mono text-muted-foreground tracking-widest">SCROLL</span>
+        <div className="w-[1px] h-8 bg-gradient-to-b from-primary to-transparent" />
+      </div>
     </div>
   );
 };
