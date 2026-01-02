@@ -34,16 +34,12 @@ export interface AboutData {
 
 export interface Technology {
   name: string;
-  icon: string;
-  color: string;
-  proficiency: number;
+  logo: string;
 }
 
 export interface TechCategory {
   id: string;
   name: string;
-  icon: string;
-  color: string;
   technologies: Technology[];
 }
 

@@ -82,6 +82,32 @@
                 "live": "https://e-baja.vercel.app"
             },
             "timeline": "2025"
+        },
+        {
+            "id": "ai-ats-resume-analyzer",
+            "title": "AI-Powered ATS Resume Analyzer",
+            "shortDesc": "An advanced AI tool for instant resume evaluation and ATS-friendly optimization using LLMs.",
+            "fullDescription": "A sophisticated recruitment tool that utilizes the Gemini AI to analyze resumes against job descriptions. The application provides detailed HR evaluations, calculates ATS match percentages, and generates optimized PDF resumes. It features seamless PDF-to-image processing for visual AI analysis and a custom-styled Streamlit interface.",
+            "year": "2025",
+            "category": "Artificial Intelligence / Web Development",
+            "role": "Independent Developer",
+            "deployed": true,
+            "technologies": [
+                "Python",
+                "Streamlit",
+                "Google Gemini API",
+                "PDF2Image",
+                "FPDF2",
+                "PIL (Pillow)",
+                "Python-Dotenv"
+            ],
+            "image": "/streamlit.jpg",
+            "featured": true,
+            "links": {
+                "github": "https://github.com/aadityaa-sharma/streamlit---2",
+                "live": "https://career-elevator.streamlit.app/"
+            },
+            "timeline": "2025"
         }
     ],
     "other": []

@@ -1,8 +1,54 @@
 {
     "categories": [
         {
+            "id": "languages",
+            "name": "Programming Languages",
+            "technologies": [
+                {
+                    "name": "C",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+                },
+                {
+                    "name": "C++",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+                },
+                {
+                    "name": "Java",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                },
+                {
+                    "name": "Python",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                },
+                {
+                    "name": "JavaScript",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                },
+                {
+                    "name": "TypeScript",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                },
+                {
+                    "name": "R",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg"
+                },
+                {
+                    "name": "HTML5",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                },
+                {
+                    "name": "CSS3",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                },
+                {
+                    "name": "Bash",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg"
+                }
+            ]
+        },
+        {
             "id": "frontend",
-            "name": "Frontend",
+            "name": "Frontend & Frameworks",
             "technologies": [
                 {
                     "name": "React",
@@ -13,30 +59,26 @@
                     "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
                 },
                 {
-                    "name": "TypeScript",
-                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-                },
-                {
                     "name": "Tailwind",
                     "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
                 },
                 {
-                    "name": "JavaScript",
-                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                    "name": "JQuery",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg"
                 },
                 {
-                    "name": "HTML5",
-                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                    "name": "Vite",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg"
                 },
                 {
-                    "name": "CSS3",
-                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                    "name": "Streamlit",
+                    "logo": "/streamlit.svg"
                 }
             ]
         },
         {
-            "id": "backend",
-            "name": "Backend",
+            "id": "backend-ai",
+            "name": "Backend & AI",
             "technologies": [
                 {
                     "name": "Node.js",
@@ -47,18 +89,38 @@
                     "logo": "/expressjs.svg"
                 },
                 {
-                    "name": "Python",
-                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                    "name": "Flask",
+                    "logo": "/flask.svg"
                 },
                 {
                     "name": "FastAPI",
                     "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
+                },
+                {
+                    "name": "PyTorch",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"
+                },
+                {
+                    "name": "TensorFlow",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+                },
+                {
+                    "name": "NumPy",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg"
+                },
+                {
+                    "name": "Pandas",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
+                },
+                {
+                    "name": "Matplotlib",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg"
                 }
             ]
         },
         {
-            "id": "database",
-            "name": "Database",
+            "id": "database-cloud",
+            "name": "Database & Cloud",
             "technologies": [
                 {
                     "name": "MongoDB",
@@ -69,12 +131,36 @@
                     "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
                 },
                 {
+                    "name": "SQLite",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg"
+                },
+                {
                     "name": "Firebase",
                     "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
                 },
                 {
-                    "name": "Redis",
-                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"
+                    "name": "Supabase",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg"
+                },
+                {
+                    "name": "Google Cloud",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
+                },
+                {
+                    "name": "Vercel",
+                    "logo": "/Vercel.svg"
+                },
+                {
+                    "name": "Netlify",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg"
+                },
+                {
+                    "name": "Heroku",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-original.svg"
+                },
+                {
+                    "name": "Render",
+                    "logo": "/render.svg"
                 }
             ]
         },
@@ -87,20 +173,36 @@
                     "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
                 },
                 {
+                    "name": "GitHub",
+                    "logo": "/github.svg"
+                },
+                {
                     "name": "Docker",
                     "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
                 },
                 {
-                    "name": "VS Code",
-                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+                    "name": "Nginx",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg"
+                },
+                {
+                    "name": "NPM",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg"
+                },
+                {
+                    "name": "Yarn",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg"
                 },
                 {
                     "name": "Figma",
                     "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
                 },
                 {
-                    "name": "Vercel",
-                    "logo": "/Vercel.svg"
+                    "name": "Canva",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg"
+                },
+                {
+                    "name": "Anaconda",
+                    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/anaconda/anaconda-original.svg"
                 }
             ]
         }
