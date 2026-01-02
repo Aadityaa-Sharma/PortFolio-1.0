@@ -1,6 +1,39 @@
 {
     "featured": [
         {
+            "id": "career-elevator-pro",
+            "title": "Career Elevator: The Unified Recruitment Intelligence Platform",
+            "shortDesc": "An all-in-one career suite combining manual ATS parsing, AI resume optimization, Glassdoor-integrated company prep, curated learning libraries, and multi-modal AI interview simulations.",
+            "fullDescription": "Career Elevator is a comprehensive ecosystem designed to automate every stage of the job seeking process through five integrated pillars: 1) A manual ATS Scanner using a Python-based engine (Flask/pdfplumber) for precise keyword density and scoring. 2) An AI ATS Reviewer (Streamlit/Gemini) that provides instant professional evaluations and PDF resume optimization. 3) A Company-Based Preparation module that leverages Glassdoor-style insights and company comparisons, offering dedicated practice environments for Aptitude, Coding, Technical, and HR rounds featuring an integrated Monaco Editor. 4) A Curated Learning Resource Library that aggregates the internet's best technical and professional development content into a centralized dashboard. 5) An AI Interview Simulation suite supporting both Text-based interactions via Gemini and Voice-based interviews powered by Vapi agents, providing detailed feedback across all roles and experience levels to enhance the candidate experience.",
+            "year": "2025",
+            "category": "Career Development / Artificial Intelligence / SaaS",
+            "role": "Lead Developer & AI Architect",
+            "deployed": true,
+            "technologies": [
+                "Vite",
+                "React",
+                "TypeScript",
+                "Flask",
+                "Python",
+                "Streamlit",
+                "Google Gemini API",
+                "Vapi Voice AI",
+                "Monaco Editor",
+                "pdfplumber",
+                "Tailwind CSS",
+                "Radix UI",
+                "Framer Motion",
+                "Recharts"
+            ],
+            "image": "/career-elevator.jpg",
+            "featured": true,
+            "links": {
+                "github": "https://github.com/aadityaa-sharma/career-elevate",
+                "live": "https://career-elevator.vercel.app"
+            },
+            "timeline": "2024 - 2025"
+        },
+        {
             "id": "image-search-ai",
             "title": "Local Image Search AI",
             "shortDesc": "Offline AI-powered image search using natural language queries.",
@@ -100,7 +133,7 @@
                 "Gunicorn",
                 "Render"
             ],
-            "image": "/ats-intelligence.jpg",
+            "image": "/ats-python.jpg",
             "featured": true,
             "links": {
                 "github": "https://github.com/aadityaa-sharma/ats-scanner",
@@ -156,7 +189,7 @@
                 "Responsive Design",
                 "WCAG Accessibility"
             ],
-            "image": "/voltex-racing.jpg",
+            "image": "/e-baja.jpg",
             "featured": true,
             "links": {
                 "github": "https://github.com/username/voltex-racing-ebaja",
