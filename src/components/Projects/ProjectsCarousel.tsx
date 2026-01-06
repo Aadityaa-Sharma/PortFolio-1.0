@@ -1,16 +1,18 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from 'lucide-react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import projectsData from '@/data/projects.json';
 import { ProjectsData } from '@/types';
 
 const data = projectsData as unknown as ProjectsData;
-const allProjects = [...data.featured, ...data.other];
 
 export const ProjectsCarousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const touchStartX = useRef(0);
     const touchEndX = useRef(0);
+
+    // Memoize the combined projects array to avoid recreating on every render
+    const allProjects = useMemo(() => [...data.featured, ...data.other], []);
 
     // 3D Tilt Motion Values
     const x = useMotionValue(0);

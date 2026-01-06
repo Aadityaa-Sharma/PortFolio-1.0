@@ -40,6 +40,7 @@ export interface Technology {
 export interface TechCategory {
   id: string;
   name: string;
+  proficiency?: number;
   technologies: Technology[];
 }
 

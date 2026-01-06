@@ -9,7 +9,7 @@ export const Skills = () => {
 
   const radarData = techStackData.categories.map(cat => ({
     subject: cat.name.split(' ')[0],
-    A: (cat as any).proficiency || 85, // Fallback to 85 if proficiency not defined
+    A: cat.proficiency || 85, // Fallback to 85 if proficiency not defined
     fullMark: 100
   }));
 
