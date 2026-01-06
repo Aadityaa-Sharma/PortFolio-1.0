@@ -1,0 +1,52 @@
+{
+    "hero": {
+        "title": "DEVELOPER & CREATOR",
+        "subtitle": "Software Engineer",
+        "description": "Crafting digital experiences that blend cutting-edge tech with Windows and cross-platform tools"
+    },
+    "bio": {
+        "intro": "I am a passionate developer who loves to explore new technologies and build innovative solutions. My journey in tech is driven by curiosity and a desire to create impactful software.",
+        "journey": "Starting my journey with a strong foundation in computer science, I have explored various domains including web development, app development, and system programming. I believe in continuous learning and applying my skills to solve real-world problems.",
+        "current": "Currently, I am focused on building intelligent web solutions and enhancing my expertise in full-stack development."
+    },
+    "education": [
+        {
+            "degree": "B.Tech, Computer Science",
+            "institution": "KIT's College of Engineering",
+            "specialization": "Computer Science and Business Systems",
+            "duration": "2023-2027",
+            "cgpa": "8.6 CGPA",
+            "location": "Kolhapur, Maharashtra"
+        },
+        {
+            "degree": "Higher Secondary",
+            "institution": "Kishore G.K School",
+            "board": "Gujarat Board",
+            "year": "2023",
+            "percentage": "60%",
+            "location": "Ahmedabad, Gujarat"
+        },
+        {
+            "degree": "Senior Secondary",
+            "institution": "Amrut School",
+            "board": "Gujarat Board",
+            "year": "2021",
+            "percentage": "78%",
+            "location": "Ahmedabad, Gujarat"
+        }
+    ],
+    "stats": {
+        "projects": "8+",
+        "Learning experience": "3 yrs",
+        "technologies": "20+",
+        "contributions": "10+",
+        "commits": "150+"
+    },
+    "highlights": [
+        "Full-stack developer specializing in modern web technologies",
+        "Open source contributor",
+        "Building intelligent web solutions",
+        "Passionate about UI/UX design",
+        "Love solving DSA problems"
+    ]
+}

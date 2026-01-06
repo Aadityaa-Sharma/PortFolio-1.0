@@ -1,0 +1,202 @@
+{
+    "featured": [
+        {
+            "id": "career-elevator-pro",
+            "title": "Career Elevator: The Unified Recruitment Intelligence Platform",
+            "shortDesc": "An all-in-one career suite combining manual ATS parsing, AI resume optimization, Glassdoor-integrated company prep, curated learning libraries, and multi-modal AI interview simulations.",
+            "fullDescription": "Career Elevator is a comprehensive ecosystem designed to automate every stage of the job seeking process through five integrated pillars: 1) A manual ATS Scanner using a Python-based engine (Flask/pdfplumber) for precise keyword density and scoring. 2) An AI ATS Reviewer (Streamlit/Gemini) that provides instant professional evaluations and PDF resume optimization. 3) A Company-Based Preparation module that leverages Glassdoor-style insights and company comparisons, offering dedicated practice environments for Aptitude, Coding, Technical, and HR rounds featuring an integrated Monaco Editor. 4) A Curated Learning Resource Library that aggregates the internet's best technical and professional development content into a centralized dashboard. 5) An AI Interview Simulation suite supporting both Text-based interactions via Gemini and Voice-based interviews powered by Vapi agents, providing detailed feedback across all roles and experience levels to enhance the candidate experience.",
+            "year": "2025",
+            "category": "Career Development / Artificial Intelligence / SaaS",
+            "role": "Lead Developer & AI Architect",
+            "deployed": true,
+            "technologies": [
+                "Vite",
+                "React",
+                "TypeScript",
+                "Flask",
+                "Python",
+                "Streamlit",
+                "Google Gemini API",
+                "Vapi Voice AI",
+                "Monaco Editor",
+                "pdfplumber",
+                "Tailwind CSS",
+                "Radix UI",
+                "Framer Motion",
+                "Recharts"
+            ],
+            "image": "/career-elevator.jpg",
+            "featured": true,
+            "links": {
+                "github": "https://github.com/aadityaa-sharma/career-elevate",
+                "live": "https://career-elevator.vercel.app"
+            },
+            "timeline": "2024 - 2025"
+        },
+        {
+            "id": "image-search-ai",
+            "title": "Local Image Search AI",
+            "shortDesc": "Offline AI-powered image search using natural language queries.",
+            "fullDescription": "A fully local, offline semantic image search engine built using BLIP and CLIP models. The system automatically generates captions, embeddings, and keywords for images, then allows users to search their image collection using natural language via frontend. It combines CLIP-based vector similarity with BLIP-generated keyword matching to improve accuracy, while remaining completely private and API-free. Designed to scale to hundreds or thousands of images with efficient batch processing and interactive search.",
+            "year": "2025",
+            "category": "AI / Computer Vision",
+            "role": "Independent Developer",
+            "deployed": false,
+            "technologies": [
+                "Python",
+                "PyTorch",
+                "Transformers",
+                "BLIP",
+                "CLIP",
+                "NumPy",
+                "Pillow",
+                "Matplotlib",
+                "tqdm"
+            ],
+            "image": "/local-image-search-ai.jpg",
+            "featured": true,
+            "links": {
+                "github": "https://github.com/Aadityaa-Sharma/local-image-search-ai"
+            },
+            "timeline": "2025"
+        },
+        {
+            "id": "portfolio-website",
+            "title": "Portfolio-Website 1.0",
+            "shortDesc": "A high-performance, JSON-driven personal brand experience.",
+            "fullDescription": "A modern, ultra-minimal portfolio website built with a focus on bold typography and organic interactions. The site features a fully decoupled data architecture where all content is managed via JSON files. Key features include custom-engineered 'green bush' growing animations on tech tiles, a cinematic project carousel, and a refined dark aesthetic using Space Grotesk and Inter typefaces. Built for speed and visual impact, it eliminates traditional scroll-based hiding in favor of immediate content visibility and glassmorphism UI elements.",
+            "year": "2025",
+            "category": "Web Development / UI Design",
+            "role": "Independent Developer",
+            "deployed": true,
+            "technologies": [
+                "React",
+                "TypeScript",
+                "Tailwind CSS",
+                "Vite",
+                "Framer Motion",
+                "Lucide React",
+                "Shadcn UI",
+                "Radix UI",
+                "JSON Data Architecture"
+            ],
+            "image": "/portfolio.jpg",
+            "featured": true,
+            "links": {
+                "github": "https://github.com/Aadityaa-Sharma/PortFolio-1.0",
+                "live": "https://aadityaa-sharma.vercel.app"
+            },
+            "timeline": "2025"
+        },
+        {
+            "id": "ai-ats-resume-analyzer",
+            "title": "AI-Powered ATS Resume Analyzer",
+            "shortDesc": "An advanced AI tool for instant resume evaluation and ATS-friendly optimization using LLMs.",
+            "fullDescription": "A sophisticated recruitment tool that utilizes the Gemini AI to analyze resumes against job descriptions. The application provides detailed HR evaluations, calculates ATS match percentages, and generates optimized PDF resumes. It features seamless PDF-to-image processing for visual AI analysis and a custom-styled Streamlit interface.",
+            "year": "2025",
+            "category": "Artificial Intelligence / Web Development",
+            "role": "Independent Developer",
+            "deployed": true,
+            "technologies": [
+                "Python",
+                "Streamlit",
+                "Google Gemini API",
+                "PDF2Image",
+                "FPDF2",
+                "PIL (Pillow)",
+                "Python-Dotenv"
+            ],
+            "image": "/streamlit.jpg",
+            "featured": true,
+            "links": {
+                "github": "https://github.com/aadityaa-sharma/streamlit---2",
+                "live": "https://career-elevator.streamlit.app/"
+            },
+            "timeline": "2025"
+        },
+        {
+            "id": "ats-scanner-intelligence",
+            "title": "Advanced ATS Resume Intelligence System",
+            "shortDesc": "A high-performance Flask-based engine for deep resume parsing, keyword mapping, and ATS scoring.",
+            "fullDescription": "A robust recruitment intelligence tool designed to analyze resumes against industry benchmarks and specific technical roles. The system features multi-layered logic for section extraction, technical keyword density mapping across six major domains, and role-specific profile matching. It calculates a comprehensive 100-point ATS score based on technical depth, action verb usage, and quantification of achievements. The backend is built with Flask and utilizes pdfplumber for high-accuracy text extraction from complex PDF layouts, generating detailed PDF/text reports with prioritized improvement action plans.",
+            "year": "2025",
+            "category": "Backend Development / NLP",
+            "role": "Lead Developer",
+            "deployed": true,
+            "technologies": [
+                "Python",
+                "Flask",
+                "pdfplumber",
+                "REST API",
+                "Regex",
+                "CORS",
+                "Gunicorn",
+                "Render"
+            ],
+            "image": "/ats-python.jpg",
+            "featured": true,
+            "links": {
+                "github": "https://github.com/aadityaa-sharma/ats-scanner",
+                "live": "https://ats-scanner-olam.onrender.com/"
+            },
+            "timeline": "2025"
+        },
+        {
+            "id": "mess-management-system",
+            "title": "Mess & Canteen Management System",
+            "shortDesc": "A full-stack operational platform for automated student billing, attendance tracking, and mess finance management.",
+            "fullDescription": "A comprehensive management solution for mess and canteen operations that automates the end-to-end billing cycle using attendance-based logic. The system features a dual-portal architecture: an owner dashboard for real-time revenue analytics, staff salary tracking, and expense management; and a student portal for viewing attendance summaries, downloading generated PDF bills, and processing payments via UPI deep links. It utilizes a serverless-ready backend for seamless deployment and includes built-in WhatsApp integration for automated bill reminders.",
+            "year": "2025",
+            "category": "Full-Stack Web Development / Management Systems",
+            "role": "Lead Developer",
+            "deployed": true,
+            "technologies": [
+                "Next.js 16",
+                "TypeScript",
+                "Node.js",
+                "Express.js",
+                "MongoDB (Mongoose)",
+                "Tailwind CSS",
+                "JWT Authentication",
+                "PDFKit",
+                "React Query"
+            ],
+            "image": "/mess-management.jpg",
+            "featured": true,
+            "links": {
+                "github": "https://github.com/Aadityaa-Sharma/Mess-Canteen-management-software",
+                "live": "https://sagar-mess.vercel.app/"
+            },
+            "timeline": "2025"
+        },
+        {
+            "id": "voltex-racing-ebaja",
+            "title": "E-BAJA 2025",
+            "shortDesc": "A striking, hand-crafted website for an electric racing team competing in BAJA SAEINDIA 2025.",
+            "fullDescription": "A professional, award-worthy website built for VOLTEX Racing, an e-BAJA team competing in BAJA SAEINDIA 2025. The design philosophy rejects templated aesthetics in favor of asymmetric, bold layouts with purposeful negative space. Features include a fullscreen video hero with automatic smooth-scroll behavior, an asymmetric mission statement with vertical typography, split-screen vehicle specifications with blueprint aesthetics. Built with pure vanilla technologies for maximum performance, featuring custom geometric elements, racing-inspired typography using Bebas Neue and JetBrains Mono, and a strict black-white-electric blue color palette.",
+            "year": "2025",
+            "category": "Web Development / UI Design",
+            "role": "Independent Developer",
+            "deployed": true,
+            "technologies": [
+                "HTML5",
+                "CSS3",
+                "Vanilla JavaScript",
+                "CSS Custom Properties",
+                "BEM Methodology",
+                "Intersection Observer API",
+                "CSS Animations",
+                "Responsive Design",
+                "WCAG Accessibility"
+            ],
+            "image": "/e-baja.jpg",
+            "featured": true,
+            "links": {
+                "github": "https://github.com/username/voltex-racing-ebaja",
+                "live": "https://e-baja.vercel.app"
+            },
+            "timeline": "2025"
+        }
+    ],
+    "other": []
+}

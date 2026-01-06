@@ -1,0 +1,21 @@
+{
+    "name": "Aditya Sharma",
+    "title": "Full-Stack Developer & Tech Enthusiast",
+    "tagline": "Building digital experiences that matter",
+    "description": "I craft elegant, high-performance web applications with modern technologies and a keen eye for design.",
+    "cta": {
+        "primary": {
+            "text": "View projects",
+            "link": "#projects"
+        },
+        "secondary": {
+            "text": "Start project",
+            "link": "#contact"
+        }
+    },
+    "highlights": [
+        "React & Next.js",
+        "Node.js & Python",
+        "UI/UX Design"
+    ]
+}

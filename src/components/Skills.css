@@ -1,0 +1,236 @@
+/* Tech Tile Base */
+.tech-tile {
+    position: relative;
+    padding: 1.5rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--card));
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.tech-tile:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    background: hsl(var(--accent) / 0.05);
+}
+
+/* Theme-aware Logo Filter */
+.tech-logo {
+    transition: filter 0.3s ease;
+}
+
+:root:not(.dark) .tech-logo {
+    /* Invert white/bright logos in light mode */
+    filter: brightness(0.2) contrast(1.2);
+}
+
+:root:not(.dark) .tech-logo[src*="original"],
+:root:not(.dark) .tech-logo[src*="plain"] {
+    /* Don't invert logos that are already colorful */
+    filter: none;
+}
+
+/* ===== Growing Vine/Bush Effect ===== */
+.vine {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Vine shapes - starts as nothing, grows into corner coverage */
+.vine::before,
+.vine::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Main leaf */
+.vine::before {
+    width: 20px;
+    height: 12px;
+    border-radius: 50% 50% 50% 0;
+}
+
+/* Secondary smaller leaf */
+.vine::after {
+    width: 14px;
+    height: 8px;
+    border-radius: 50% 50% 50% 0;
+}
+
+/* Position vines in corners */
+.vine-tl {
+    top: 0;
+    left: 0;
+}
+
+.vine-tl::before {
+    top: 4px;
+    left: 4px;
+    transform: rotate(-45deg) scale(0);
+}
+
+.vine-tl::after {
+    top: 12px;
+    left: 16px;
+    transform: rotate(-20deg) scale(0);
+}
+
+.vine-tr {
+    top: 0;
+    right: 0;
+}
+
+.vine-tr::before {
+    top: 4px;
+    right: 4px;
+    left: auto;
+    transform: rotate(45deg) scale(0);
+    border-radius: 50% 50% 0 50%;
+}
+
+.vine-tr::after {
+    top: 12px;
+    right: 16px;
+    left: auto;
+    transform: rotate(20deg) scale(0);
+    border-radius: 50% 50% 0 50%;
+}
+
+.vine-bl {
+    bottom: 0;
+    left: 0;
+}
+
+.vine-bl::before {
+    bottom: 4px;
+    left: 4px;
+    top: auto;
+    transform: rotate(-135deg) scale(0);
+    border-radius: 50% 0 50% 50%;
+}
+
+.vine-bl::after {
+    bottom: 12px;
+    left: 16px;
+    top: auto;
+    transform: rotate(-110deg) scale(0);
+    border-radius: 50% 0 50% 50%;
+}
+
+.vine-br {
+    bottom: 0;
+    right: 0;
+}
+
+.vine-br::before {
+    bottom: 4px;
+    right: 4px;
+    left: auto;
+    top: auto;
+    transform: rotate(135deg) scale(0);
+    border-radius: 0 50% 50% 50%;
+}
+
+.vine-br::after {
+    bottom: 12px;
+    right: 16px;
+    left: auto;
+    top: auto;
+    transform: rotate(110deg) scale(0);
+    border-radius: 0 50% 50% 50%;
+}
+
+/* ===== Grow on Hover ===== */
+.tech-tile.hovered .vine::before,
+.tech-tile.hovered .vine::after {
+    opacity: 1;
+}
+
+.tech-tile.hovered .vine-tl::before {
+    transform: rotate(-45deg) scale(1);
+}
+
+.tech-tile.hovered .vine-tl::after {
+    transform: rotate(-20deg) scale(1);
+    transition-delay: 0.1s;
+}
+
+.tech-tile.hovered .vine-tr::before {
+    transform: rotate(45deg) scale(1);
+    transition-delay: 0.05s;
+}
+
+.tech-tile.hovered .vine-tr::after {
+    transform: rotate(20deg) scale(1);
+    transition-delay: 0.15s;
+}
+
+.tech-tile.hovered .vine-bl::before {
+    transform: rotate(-135deg) scale(1);
+    transition-delay: 0.1s;
+}
+
+.tech-tile.hovered .vine-bl::after {
+    transform: rotate(-110deg) scale(1);
+    transition-delay: 0.2s;
+}
+
+.tech-tile.hovered .vine-br::before {
+    transform: rotate(135deg) scale(1);
+    transition-delay: 0.15s;
+}
+
+.tech-tile.hovered .vine-br::after {
+    transform: rotate(110deg) scale(1);
+    transition-delay: 0.25s;
+}
+
+/* Extra vine decorations - middle edges */
+.tech-tile.hovered::before,
+.tech-tile.hovered::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 10px;
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    border-radius: 50% 50% 50% 0;
+    opacity: 0;
+    animation: growLeaf 0.4s ease-out forwards;
+}
+
+.tech-tile.hovered::before {
+    top: 50%;
+    left: 2px;
+    transform: rotate(-90deg);
+    animation-delay: 0.2s;
+}
+
+.tech-tile.hovered::after {
+    top: 50%;
+    right: 2px;
+    left: auto;
+    transform: rotate(90deg);
+    border-radius: 50% 50% 0 50%;
+    animation-delay: 0.25s;
+}
+
+@keyframes growLeaf {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-90deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(-90deg);
+    }
+}
