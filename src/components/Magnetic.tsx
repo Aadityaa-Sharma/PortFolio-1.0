@@ -7,6 +7,7 @@ interface MagneticProps {
 
 export const Magnetic: React.FC<MagneticProps> = ({ children }) => {
     const ref = useRef<HTMLDivElement>(null);
+    const [isTouchDevice, setIsTouchDevice] = React.useState(false);
 
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -15,8 +16,15 @@ export const Magnetic: React.FC<MagneticProps> = ({ children }) => {
     const mouseX = useSpring(x, springConfig);
     const mouseY = useSpring(y, springConfig);
 
+    React.useEffect(() => {
+        // Detect touch device on mount
+        setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    }, []);
+
     const handleMouseMove = (e: React.MouseEvent) => {
-        if (!ref.current) return;
+        // Skip magnetic effect on touch devices
+        if (isTouchDevice || !ref.current) return;
+
         const { clientX, clientY } = e;
         const { height, width, left, top } = ref.current.getBoundingClientRect();
         const centerX = left + width / 2;
@@ -30,6 +38,7 @@ export const Magnetic: React.FC<MagneticProps> = ({ children }) => {
     };
 
     const handleMouseLeave = () => {
+        if (isTouchDevice) return;
         x.set(0);
         y.set(0);
     };

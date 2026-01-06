@@ -13,38 +13,6 @@ import { CustomCursor } from '@/components/CustomCursor';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { SectionWrapper } from '@/components/SectionWrapper';
 
-const Vines = () => {
-  const { scrollYProgress } = useScroll();
-  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
-  return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-[0.1]">
-      <svg
-        viewBox="0 0 100 1000"
-        preserveAspectRatio="none"
-        className="w-full h-[200vh] text-foreground"
-      >
-        <motion.path
-          d="M 10,0 Q 30,100 10,200 T 10,400 Q 30,500 10,600 T 10,800 Q 30,900 10,1000"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="0.2"
-          style={{ pathLength }}
-          strokeOpacity="0.2"
-        />
-        <motion.path
-          d="M 90,0 Q 70,100 90,200 T 90,400 Q 70,500 90,600 T 90,800 Q 70,900 90,1000"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="0.2"
-          style={{ pathLength }}
-          strokeOpacity="0.2"
-        />
-      </svg>
-    </div>
-  );
-};
-
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -61,7 +29,6 @@ const Index = () => {
         >
           <CustomCursor />
           <Navigation />
-          <Vines />
 
           <main className="bg-background relative z-10">
             <SectionWrapper id="hero" isFirst>

@@ -9,10 +9,7 @@ export const Skills = () => {
 
   const radarData = techStackData.categories.map(cat => ({
     subject: cat.name.split(' ')[0],
-    A: cat.id === 'frontend' ? 95 :
-      cat.id === 'backend' ? 90 :
-        cat.id === 'ai-ml' ? 85 :
-          cat.id === 'languages' ? 92 : 88,
+    A: (cat as any).proficiency || 85, // Fallback to 85 if proficiency not defined
     fullMark: 100
   }));
 
@@ -96,12 +93,6 @@ export const Skills = () => {
                       onMouseEnter={() => setHoveredTech(tech.name)}
                       onMouseLeave={() => setHoveredTech(null)}
                     >
-                      {/* Growing bush vines - all corners */}
-                      <div className="vine vine-tl" />
-                      <div className="vine vine-tr" />
-                      <div className="vine vine-bl" />
-                      <div className="vine vine-br" />
-
                       {/* Content */}
                       <div className="relative z-10 text-center flex flex-col items-center gap-3">
                         <img

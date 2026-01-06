@@ -3,6 +3,7 @@
         {
             "id": "languages",
             "name": "Programming Languages",
+            "proficiency": 90,
             "technologies": [
                 {
                     "name": "C",
@@ -45,6 +46,7 @@
         {
             "id": "frontend",
             "name": "Frontend & Frameworks",
+            "proficiency": 95,
             "technologies": [
                 {
                     "name": "React",
@@ -91,6 +93,7 @@
         {
             "id": "backend",
             "name": "Backend & Database",
+            "proficiency": 88,
             "technologies": [
                 {
                     "name": "Node.js",
@@ -179,6 +182,7 @@
         {
             "id": "devops-cloud",
             "name": "DevOps & Cloud",
+            "proficiency": 85,
             "technologies": [
                 {
                     "name": "Git",
