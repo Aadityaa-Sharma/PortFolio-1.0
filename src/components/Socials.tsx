@@ -41,8 +41,8 @@ export const Socials = () => {
                 download={social.download || false}
                 className="group glass-card !p-6 flex flex-col items-center justify-center gap-4 text-center hover:scale-105 transition-transform duration-300"
               >
-                <div className="p-4 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-background transition-all duration-300">
-                  <Icon size={24} />
+                <div className="p-4 rounded-xl border border-foreground/10 group-hover:bg-foreground group-hover:border-foreground transition-all duration-300 shadow-sm">
+                  <Icon size={24} className="text-foreground group-hover:text-background transition-colors" />
                 </div>
 
                 <span className="text-sm font-body font-medium text-foreground/80 group-hover:text-foreground transition-colors">

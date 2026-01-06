@@ -1,52 +1,33 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ThemeProvider } from "next-themes";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import themeConfig from "@/data/theme.json";
 import ClickSpark from "@/components/ClickSpark";
+const App = () => {
+  const [path, setPath] = useState(window.location.pathname);
 
-const queryClient = new QueryClient();
-
-const ColorInjector = () => {
   useEffect(() => {
-    const root = document.documentElement;
-    const { primary, secondary, accent } = themeConfig.colors;
-    root.style.setProperty("--primary", primary);
-    root.style.setProperty("--secondary", secondary);
-    root.style.setProperty("--accent", accent);
-    root.style.setProperty("--glow", primary);
-    root.style.setProperty("--ring", primary);
+    const handlePopState = () => setPath(window.location.pathname);
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
   }, []);
-  return null;
-};
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
+  const navigate = (to: string) => {
+    window.history.pushState({}, "", to);
+    setPath(to);
+  };
+
+  return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-      <TooltipProvider>
-        <ColorInjector />
-        <Toaster />
-        <Sonner />
-        <ClickSpark
-          sparkSize={29}
-          sparkRadius={60}
-          duration={600}
-        >
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </ClickSpark>
-      </TooltipProvider>
+      <ClickSpark
+        sparkSize={29}
+        sparkRadius={60}
+        duration={600}
+      >
+        {path === "/" ? <Index /> : <NotFound navigate={navigate} />}
+      </ClickSpark>
     </ThemeProvider>
-  </QueryClientProvider>
-);
+  );
+};
 
 export default App;

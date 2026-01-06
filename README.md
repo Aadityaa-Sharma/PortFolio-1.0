@@ -1,46 +1,65 @@
-# Aditya's Portfolio
+# Aditya Sharma | Developer Portfolio
 
-Welcome to the repository for **Aditya's Portfolio**. This project showcases my work as a Full-Stack Developer and Creative Coder, built with modern web technologies.
+A high-performance, minimalist developer portfolio built with **React**, **Vite**, and **Tailwind CSS**. Featuring a sophisticated dual-tone **Black & White** design, interactive animations, and a focus on visual clarity.
 
-## Tech Stack
+## ✨ Features
 
-- **Framework**: [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+- 🌓 **Dual-Tone Theme**: High-contrast Black & White mode with zero-color distraction.
+- 🚀 **Performance Optimized**: Stripped of heavy dependencies like Three.js for lightning-fast loads.
+- 📱 **Fully Responsive**: Seamless experience across mobile, tablet, and desktop.
+- ⚡ **Interactive UI**:
+  - Smooth parallax Hero section.
+  - Interactive Project Carousel.
+  - Animated Skills radar and timeline.
+  - ClickSpark background effects.
+- 🏗️ **Data Driven**: All content is managed via modular JSON files.
+
+## 🛠️ Tech Stack
+
+- **Core**: [React](https://react.dev/) + [Vite](https://vitejs.dev/)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Charts**: [Recharts](https://recharts.org/)
 
-## Getting Started
+## 🚀 Getting Started
 
-To run this project locally, follow these steps:
+### Prerequisites
 
-1.  **Clone the repository**
-    ```bash
-    git clone <YOUR_GIT_URL>
-    cd byte-canvas-main
-    ```
+- Node.js (v18 or higher)
+- npm or yarn
 
-2.  **Install dependencies**
-    ```bash
-    npm install
-    ```
+### Installation
 
-3.  **Start the development server**
-    ```bash
-    npm run dev
-    ```
+1. Clone the repository:
+   ```bash
+   git clone <YOUR_GIT_URL>
+   cd byte-canvas-main
+   ```
 
-4.  **Build for production**
-    ```bash
-    npm run build
-    ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## Project Structure
+3. Start development server:
+   ```bash
+   npm run dev
+   ```
 
-- `src/components`: Reusable UI components and sections (Hero, About, Projects, etc.).
-- `src/pages`: Main page layout.
-- `src/lib`: Utility functions and configuration.
-- `public`: Static assets (favicons, images).
+4. Build for production:
+   ```bash
+   npm run build
+   ```
+
+## 📂 Project Structure
+
+- `src/components`: UI components and section layouts (Hero, Projects, Skills, etc.).
+- `src/data`: JSON files driving the content (`projects.json`, `about.json`, etc.).
+- `src/pages`: Main application layouts.
+- `src/types`: TypeScript interfaces for type safety.
+- `public`: Optimized assets and static files.
 
 ---
 

@@ -1,130 +1,179 @@
 import { Mail } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import heroData from '@/data/hero.json';
 import { Magnetic } from './Magnetic';
+import { useEffect, useState } from 'react';
+
+// Morphing Mesh Gradient Component - Optimized for Performance
+const MorphingMesh = () => {
+    const mouseX = useMotionValue(0.5);
+    const mouseY = useMotionValue(0.5);
+
+    // Using springs for smoother, throttled movement without React re-renders
+    const springX = useSpring(mouseX, { stiffness: 30, damping: 40 });
+    const springY = useSpring(mouseY, { stiffness: 30, damping: 40 });
+
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            mouseX.set(e.clientX / window.innerWidth);
+            mouseY.set(e.clientY / window.innerHeight);
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, [mouseX, mouseY]);
+
+    // Derived transforms for varied orb movement
+    const orb1X = useTransform(springX, [0, 1], [-50, 50]);
+    const orb1Y = useTransform(springY, [0, 1], [-50, 50]);
+
+    const orb2X = useTransform(springX, [0, 1], [60, -60]);
+    const orb2Y = useTransform(springY, [0, 1], [60, -60]);
+
+    const orb3X = useTransform(springY, [0, 1], [-40, 40]);
+    const orb3Y = useTransform(springX, [0, 1], [40, -40]);
+
+    return (
+        <div className="absolute inset-0 z-0 overflow-hidden bg-background pointer-events-none">
+            {/* Layered Mesh Orbs - Reduced blur and optimized with will-change */}
+            <motion.div
+                style={{ x: orb1X, y: orb1Y, willChange: 'transform' }}
+                className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-foreground/10 blur-[80px] mix-blend-overlay opacity-40 dark:opacity-20"
+            />
+            <motion.div
+                style={{ x: orb2X, y: orb2Y, willChange: 'transform' }}
+                className="absolute bottom-[-20%] right-[-10%] w-[70%] h-[70%] rounded-full bg-foreground/5 blur-[100px] mix-blend-overlay opacity-40 dark:opacity-20"
+            />
+            <motion.div
+                style={{ x: orb3X, y: orb3Y, willChange: 'transform' }}
+                className="absolute top-[20%] right-[10%] w-[40%] h-[40%] rounded-full bg-foreground/5 blur-[60px] mix-blend-overlay opacity-30 dark:opacity-10"
+            />
+
+            {/* Noise Texture for High-Fidelity feel - Static Rect */}
+            <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay pointer-events-none">
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <filter id="meshNoise">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
+                    </filter>
+                    <rect width="100%" height="100%" filter="url(#meshNoise)" />
+                </svg>
+            </div>
+        </div>
+    );
+};
 
 export const Hero = () => {
-  const { scrollY } = useScroll();
-  const gridY = useTransform(scrollY, [0, 1000], [0, 200]);
-  const accentY = useTransform(scrollY, [0, 1000], [0, -150]);
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+    const smoothX = useSpring(mouseX, { stiffness: 40, damping: 30 });
+    const smoothY = useSpring(mouseY, { stiffness: 40, damping: 30 });
 
-  return (
-    <div className="relative w-full min-h-screen flex items-center overflow-hidden">
-      {/* Background Grid */}
-      <motion.div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-          y: gridY
-        }}
-      />
+    // Stronger parallax for the Bold Typography
+    const titleX = useTransform(smoothX, [-500, 500], [40, -40]);
+    const titleY = useTransform(smoothY, [-500, 500], [20, -20]);
 
-      {/* Gradient Accent */}
-      <motion.div
-        className="absolute top-0 right-0 w-1/2 h-full opacity-30 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse at top right, hsl(195 100% 50% / 0.2) 0%, transparent 50%)',
-          y: accentY
-        }}
-      />
+    const handleMouseMove = (e: React.MouseEvent) => {
+        const { clientX, clientY } = e;
+        const { innerWidth, innerHeight } = window;
+        mouseX.set(clientX - innerWidth / 2);
+        mouseY.set(clientY - innerHeight / 2);
+    };
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 lg:px-16 py-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left: Text Content */}
-          <div className="space-y-8">
-            {/* Name Badge */}
-            <div className="flex flex-wrap items-center gap-4">
-              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-primary/30 bg-primary/5">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-sm font-mono text-primary">Available for work</span>
-              </div>
-              <a
-                href="mailto:adityaasharm@gmail.com"
-                className="btn-minimal-outline !py-2 !px-4 flex items-center gap-2 text-xs font-mono lowercase tracking-tight opacity-70 hover:opacity-100 transition-opacity"
-              >
-                <Mail size={14} />
-                adityaasharm@gmail.com
-              </a>
-            </div>
+    return (
+        <div
+            className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-background"
+            onMouseMove={handleMouseMove}
+        >
+            <MorphingMesh />
 
-            {/* Main Title */}
-            <div className="space-y-4">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-bold leading-tight tracking-tight">
-                <span className="text-foreground">Hi, I'm </span>
-                <span className="gradient-text">{heroData.name.split(' ')[0]}</span>
-              </h1>
-              <p className="text-2xl lg:text-3xl font-heading font-semibold text-muted-foreground">
-                {heroData.title}
-              </p>
-            </div>
+            <div className="relative z-20 w-full max-w-[1800px] mx-auto px-8 lg:px-24">
 
-            {/* Description */}
-            <p className="text-lg text-muted-foreground max-w-lg leading-relaxed font-body">
-              {heroData.description}
-            </p>
-
-            {/* Tech Highlights */}
-            <div className="flex flex-wrap gap-3">
-              {heroData.highlights.map((item, i) => (
-                <span
-                  key={i}
-                  className="px-4 py-2 rounded-lg text-sm font-mono bg-muted text-foreground border border-border"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Magnetic>
-                <a
-                  href={heroData.cta.primary.link}
-                  className="btn-minimal"
-                >
-                  {heroData.cta.primary.text}
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a
-                  href={heroData.cta.secondary.link}
-                  className="btn-minimal-outline"
-                >
-                  {heroData.cta.secondary.text}
-                </a>
-              </Magnetic>
-            </div>
-          </div>
-
-          {/* Right: Visual Element */}
-          <div className="hidden lg:flex items-center justify-center">
-            <div className="relative w-80 h-80">
-              {/* Animated rings */}
-              <div className="absolute inset-0 border-2 border-primary/20 rounded-full animate-pulse" />
-              <div className="absolute inset-4 border border-primary/30 rounded-full" style={{ animationDelay: '0.5s' }} />
-              <div className="absolute inset-8 border border-primary/40 rounded-full" />
-
-              {/* Center content */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl font-heading font-bold gradient-text">{'</>'}</div>
-                  <div className="text-sm font-mono text-muted-foreground mt-2">Code & Create</div>
+                {/* Minimalist Status Bar */}
+                <div className="flex items-center justify-between mb-24 opacity-60">
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="flex items-center gap-6"
+                    >
+                        <div className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
+                            <span className="text-[10px] font-mono uppercase tracking-[0.3em]">System_Active</span>
+                        </div>
+                        <div className="h-px w-12 bg-foreground/10" />
+                        <span className="text-[10px] font-mono uppercase tracking-[0.3em] hidden sm:block">Availability: 2024_Open</span>
+                    </motion.div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-xs font-mono text-muted-foreground tracking-widest">SCROLL</span>
-        <div className="w-[1px] h-8 bg-gradient-to-b from-primary to-transparent" />
-      </div>
-    </div>
-  );
+                {/* Main Content: Bold Brutalist Typography */}
+                <div className="relative grid lg:grid-cols-[1.5fr_1fr] gap-20 items-end">
+
+                    <motion.div style={{ x: titleX, y: titleY }} className="cursor-default select-none">
+                        <h1 className="font-heading font-black tracking-[-0.05em] leading-[0.8] uppercase flex flex-col">
+                            <motion.span
+                                initial={{ opacity: 0, y: 150 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                                className="block text-[18vw] lg:text-[14vw] text-foreground/10 -mb-[2vw]"
+                                style={{
+                                    WebkitTextStroke: '2px hsl(var(--foreground) / 0.35)',
+                                    filter: 'drop-shadow(0 0 40px hsl(var(--foreground) / 0.1))'
+                                }}
+                            >
+                                ADITYA
+                            </motion.span>
+                            <motion.span
+                                initial={{ opacity: 0, y: 150 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                                className="text-[18vw] lg:text-[14vw] text-foreground"
+                            >
+                                SHARMA
+                            </motion.span>
+                        </h1>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.8 }}
+                        className="space-y-12 pb-8"
+                    >
+                        <div className="space-y-6 max-w-md">
+                            <p className="text-2xl lg:text-3xl font-heading font-bold text-foreground tracking-tight leading-none uppercase">
+                                {heroData.title}
+                            </p>
+                            <p className="text-sm font-body text-muted-foreground leading-relaxed">
+                                {heroData.description}
+                            </p>
+                        </div>
+
+                        <div className="flex flex-wrap gap-6">
+                            <Magnetic>
+                                <a
+                                    href={heroData.cta.primary.link}
+                                    className="group relative inline-flex items-center justify-center px-10 py-5 bg-foreground text-background font-mono text-xs font-bold uppercase tracking-[0.2em] transition-transform duration-300 hover:scale-105"
+                                >
+                                    <div className="absolute inset-0 border border-foreground translate-x-1.5 translate-y-1.5 transition-transform group-hover:translate-x-0 group-hover:translate-y-0" />
+                                    <span className="relative z-10">{heroData.cta.primary.text}</span>
+                                </a>
+                            </Magnetic>
+                            <Magnetic>
+                                <a
+                                    href={heroData.cta.secondary.link}
+                                    className="group relative inline-flex items-center justify-center px-10 py-5 border border-foreground/20 font-mono text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-foreground/5"
+                                >
+                                    <span className="text-foreground/60 group-hover:text-foreground transition-colors">{heroData.cta.secondary.text}</span>
+                                </a>
+                            </Magnetic>
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+
+            {/* Cinematic Scroll Indicator */}
+            <div className="absolute bottom-12 right-12 flex items-center gap-6">
+                <span className="text-[10px] font-mono text-foreground/20 uppercase tracking-[0.6em] vertical-text transform rotate-180" style={{ writingMode: 'vertical-rl' }}>Scroll_To_Explore</span>
+                <div className="w-px h-24 bg-gradient-to-t from-foreground/40 to-transparent" />
+            </div>
+        </div>
+    );
 };

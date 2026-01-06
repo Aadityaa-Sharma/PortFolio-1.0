@@ -52,15 +52,18 @@ export const ProjectsCarousel = () => {
 
     const handleTouchStart = (e: React.TouchEvent) => {
         touchStartX.current = e.touches[0].clientX;
+        touchEndX.current = e.touches[0].clientX; // Reset endX to startX to prevent ghost swipes
     };
 
     const handleTouchMove = (e: React.TouchEvent) => {
         touchEndX.current = e.touches[0].clientX;
     };
 
-    const handleTouchEnd = () => {
+    const handleTouchEnd = (e: React.TouchEvent) => {
         const swipeDistance = touchStartX.current - touchEndX.current;
-        if (Math.abs(swipeDistance) > 50) {
+        const swipeThreshold = 70; // Increased threshold for stability
+
+        if (Math.abs(swipeDistance) > swipeThreshold) {
             if (swipeDistance > 0) goToNext();
             else goToPrevious();
         }
@@ -165,7 +168,7 @@ export const ProjectsCarousel = () => {
                                 transform: "translateZ(50px)"
                             }}
                             onError={(e) => {
-                                (e.target as HTMLImageElement).src = 'https://placehold.co/600x400/0a0a0f/00D9FF?text=Project';
+                                (e.target as HTMLImageElement).src = 'https://placehold.co/600x400/000000/ffffff?text=Project';
                             }}
                         />
                         <div

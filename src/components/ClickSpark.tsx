@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useCallback } from 'react';
-import theme from '@/data/theme.json';
 
 interface ClickSparkProps {
   sparkColor?: string;
@@ -20,7 +19,7 @@ interface Spark {
 }
 
 const ClickSpark: React.FC<ClickSparkProps> = ({
-  sparkColor = `hsl(${theme.colors.primary})`,
+  sparkColor = "hsl(var(--primary))",
   sparkSize = 10,
   sparkRadius = 15,
   sparkCount = 8,
@@ -40,19 +39,14 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
     const parent = canvas.parentElement;
     if (!parent) return;
 
-    let resizeTimeout: NodeJS.Timeout;
-
     const resizeCanvas = () => {
       const { width, height } = parent.getBoundingClientRect();
-      if (canvas.width !== width || canvas.height !== height) {
-        canvas.width = width;
-        canvas.height = height;
-      }
+      canvas.width = width;
+      canvas.height = height;
     };
 
     const handleResize = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(resizeCanvas, 100);
+      resizeCanvas();
     };
 
     const ro = new ResizeObserver(handleResize);
@@ -62,7 +56,6 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
 
     return () => {
       ro.disconnect();
-      clearTimeout(resizeTimeout);
     };
   }, []);
 
@@ -94,7 +87,7 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
       if (!startTimeRef.current) {
         startTimeRef.current = timestamp;
       }
-      ctx?.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       sparksRef.current = sparksRef.current.filter((spark: Spark) => {
         const elapsed = timestamp - spark.startTime;
@@ -113,7 +106,10 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
         const x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
         const y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
 
-        ctx.strokeStyle = sparkColor;
+        // Resolve CSS color at draw time
+        const resolvedColor = getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim();
+        ctx.strokeStyle = resolvedColor ? `hsl(${resolvedColor})` : 'hsl(0 0% 50%)';
+
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(x1, y1);
@@ -155,7 +151,7 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
     <div className="relative w-full h-full" onClick={handleClick}>
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 pointer-events-none z-[999]"
+        className="absolute inset-0 pointer-events-none z-[1000]"
       />
       {children}
     </div>

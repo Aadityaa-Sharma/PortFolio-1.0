@@ -88,13 +88,13 @@ export const About = () => {
                 <div className="flex items-center gap-6 mt-4 lg:mt-0">
                   {edu.cgpa && (
                     <div className="text-center">
-                      <div className="text-lg font-heading font-bold text-green-400">{edu.cgpa}</div>
+                      <div className="text-lg font-heading font-bold text-primary">{edu.cgpa}</div>
                       <div className="text-xs text-muted-foreground font-mono">CGPA</div>
                     </div>
                   )}
                   {edu.percentage && (
                     <div className="text-center">
-                      <div className="text-lg font-heading font-bold text-green-400">{edu.percentage}</div>
+                      <div className="text-lg font-heading font-bold text-primary">{edu.percentage}</div>
                       <div className="text-xs text-muted-foreground font-mono">Score</div>
                     </div>
                   )}

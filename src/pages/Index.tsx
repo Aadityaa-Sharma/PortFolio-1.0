@@ -18,33 +18,28 @@ const Vines = () => {
   const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-[0.15]">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-[0.1]">
       <svg
         viewBox="0 0 100 1000"
         preserveAspectRatio="none"
-        className="w-full h-[200vh]"
+        className="w-full h-[200vh] text-foreground"
       >
         <motion.path
           d="M 10,0 Q 30,100 10,200 T 10,400 Q 30,500 10,600 T 10,800 Q 30,900 10,1000"
           fill="none"
-          stroke="url(#vine-gradient)"
+          stroke="currentColor"
           strokeWidth="0.2"
           style={{ pathLength }}
+          strokeOpacity="0.2"
         />
         <motion.path
           d="M 90,0 Q 70,100 90,200 T 90,400 Q 70,500 90,600 T 90,800 Q 70,900 90,1000"
           fill="none"
-          stroke="url(#vine-gradient)"
+          stroke="currentColor"
           strokeWidth="0.2"
           style={{ pathLength }}
+          strokeOpacity="0.2"
         />
-        <defs>
-          <linearGradient id="vine-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#22c55e" />
-            <stop offset="50%" stopColor="#16a34a" />
-            <stop offset="100%" stopColor="#15803d" />
-          </linearGradient>
-        </defs>
       </svg>
     </div>
   );
@@ -68,7 +63,7 @@ const Index = () => {
           <Navigation />
           <Vines />
 
-          <main>
+          <main className="bg-background relative z-10">
             <SectionWrapper id="hero" isFirst>
               <Hero />
             </SectionWrapper>

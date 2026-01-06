@@ -1,14 +1,14 @@
-import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 
-const NotFound = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+interface NotFoundProps {
+  navigate: (to: string) => void;
+}
 
+const NotFound = ({ navigate }: NotFoundProps) => {
   useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
+    console.error("404 Error: User attempted to access non-existent route:", window.location.pathname);
+  }, []);
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-background px-8 overflow-hidden relative">

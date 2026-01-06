@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Github, Linkedin, Instagram, FileText } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Instagram } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import { Magnetic } from './Magnetic';
 import socialsData from '@/data/socials.json';
@@ -102,9 +102,9 @@ export const Navigation = () => {
                   layout: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
                 }}
               >
-                <span className="text-primary">[</span>
+                <span className="text-foreground/40">[</span>
                 AS
-                <span className="text-primary">]</span>
+                <span className="text-foreground/40">]</span>
               </motion.a>
 
               {/* Social Icons - Desktop */}
@@ -172,7 +172,7 @@ export const Navigation = () => {
                     {activeSection === link.href.substring(1) && (
                       <motion.div
                         layoutId="nav-active"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary z-[1]"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}

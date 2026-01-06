@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import socialsData from '@/data/socials.json';
+import { Github, Linkedin, Instagram } from 'lucide-react';
 
-const socialIcons = [
-  { icon: Github, url: '#', label: 'GitHub' },
-  { icon: Linkedin, url: '#', label: 'LinkedIn' },
-  { icon: Twitter, url: '#', label: 'Twitter' },
-];
+const iconMap: Record<string, any> = {
+  github: Github,
+  linkedin: Linkedin,
+  insta: Instagram,
+};
 
 export const Footer = ({ isEmbedded }: { isEmbedded?: boolean }) => {
   return (
@@ -24,19 +25,22 @@ export const Footer = ({ isEmbedded }: { isEmbedded?: boolean }) => {
 
           {/* Social Icons */}
           <div className="flex gap-4">
-            {socialIcons.map(({ icon: Icon, url, label }) => (
-              <motion.a
-                key={label}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="p-2 text-foreground/50 hover:text-primary transition-colors duration-300"
-                whileHover={{ scale: 1.2, y: -2 }}
-              >
-                <Icon size={20} strokeWidth={1.5} />
-              </motion.a>
-            ))}
+            {socialsData.links.filter(l => iconMap[l.id]).map((link) => {
+              const Icon = iconMap[link.id];
+              return (
+                <motion.a
+                  key={link.id}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.platform}
+                  className="p-2 text-foreground/50 hover:text-primary transition-colors duration-300"
+                  whileHover={{ scale: 1.2, y: -2 }}
+                >
+                  <Icon size={20} strokeWidth={1.5} />
+                </motion.a>
+              );
+            })}
           </div>
         </div>
       </div>

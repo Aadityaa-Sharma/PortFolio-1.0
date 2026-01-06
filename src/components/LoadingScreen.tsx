@@ -1,63 +1,67 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 
-export const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void }) => {
-  const [count, setCount] = useState(0);
+interface LoadingScreenProps {
+  onLoadingComplete?: () => void;
+}
 
+export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCount((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(onLoadingComplete, 200);
-          return 100;
-        }
-        return prev + 2;
-      });
-    }, 20);
+    const timer = setTimeout(() => {
+      onLoadingComplete?.();
+    }, 2000);
 
-    return () => clearInterval(interval);
+    return () => clearTimeout(timer);
   }, [onLoadingComplete]);
 
   return (
-    <div className="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center">
-      {/* Logo */}
-      <motion.div
-        layoutId="main-logo"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{
-          duration: 0.5,
-          layout: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-        }}
-        className="mb-12"
-      >
-        <span className="text-6xl font-extrabold text-foreground tracking-tighter">
-          <span className="text-primary">[</span>
-          AS
-          <span className="text-primary">]</span>
-        </span>
-      </motion.div>
-
-      {/* Progress Bar */}
-      <div className="w-48 h-px bg-foreground/10 overflow-hidden">
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-background"
+    >
+      <div className="relative flex flex-col items-center gap-8">
+        {/* Animated Logo */}
         <motion.div
-          className="h-full bg-primary"
-          initial={{ width: '0%' }}
-          animate={{ width: `${count}%` }}
-          transition={{ duration: 0.1 }}
-        />
-      </div>
+          layoutId="logo"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{
+            duration: 1,
+            ease: [0.16, 1, 0.3, 1]
+          }}
+          className="text-4xl font-extrabold text-foreground tracking-tighter"
+        >
+          <span className="text-foreground/40">[</span>
+          AS
+          <span className="text-foreground/40">]</span>
+        </motion.div>
 
-      {/* Counter */}
-      <motion.span
-        className="mt-4 text-sm font-mono text-muted-foreground"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-      >
-        {count}%
-      </motion.span>
-    </div>
+        {/* Loading Progress Bar */}
+        <div className="w-48 h-[1px] bg-foreground/10 relative overflow-hidden">
+          <motion.div
+            initial={{ x: '-100%' }}
+            animate={{ x: '100%' }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            className="absolute inset-0 bg-foreground"
+          />
+        </div>
+
+        {/* Status Text */}
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="text-[10px] font-mono uppercase tracking-[0.4em] text-foreground/50"
+        >
+          Initializing Experience
+        </motion.span>
+      </div>
+    </motion.div>
   );
 };

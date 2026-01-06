@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import techStackData from '@/data/techstack.json';
-import themeData from '@/data/theme.json';
 import { RevealText } from './SectionWrapper';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, RadarProps } from 'recharts';
 import './Skills.css';
@@ -44,20 +43,29 @@ export const Skills = () => {
             </div>
           </div>
 
-          <div className="glass-card !p-4 h-[400px] flex items-center justify-center overflow-hidden">
+          <div className="glass-card !p-4 h-[400px] flex items-center justify-center overflow-hidden text-foreground">
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
-                <PolarGrid stroke="rgba(255,255,255,0.1)" />
+                <PolarGrid
+                  stroke="currentColor"
+                  strokeOpacity={0.2}
+                />
                 <PolarAngleAxis
                   dataKey="subject"
-                  tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 12, fontWeight: 500 }}
+                  tick={{
+                    fill: 'currentColor',
+                    fontSize: 10,
+                    fontWeight: 600,
+                    className: "fill-foreground/40 uppercase tracking-widest font-mono select-none"
+                  }}
                 />
                 <Radar
-                  name="Skills"
+                  name="Proficiency"
                   dataKey="A"
-                  stroke={`hsl(${themeData.colors.primary})`}
-                  fill={`hsl(${themeData.colors.primary})`}
-                  fillOpacity={0.3}
+                  stroke="hsl(var(--foreground))"
+                  fill="hsl(var(--foreground))"
+                  fillOpacity={0.2}
+                  animationDuration={1500}
                 />
               </RadarChart>
             </ResponsiveContainer>

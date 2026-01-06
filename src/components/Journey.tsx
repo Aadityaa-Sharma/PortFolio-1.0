@@ -1,6 +1,5 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useInView } from '@/hooks/useInView';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { RevealText } from './SectionWrapper';
 
 const journeyItems = [
@@ -8,38 +7,32 @@ const journeyItems = [
     year: '2025',
     title: 'Final Year Project',
     description: 'Leading development of an AI-powered campus management system.',
-    color: 'electric',
+    color: 'currentColor',
   },
   {
     year: '2024',
     title: 'Software Engineering Intern',
     description: 'Contributed to production applications at a tech startup.',
-    color: 'coral',
+    color: 'currentColor',
   },
   {
     year: '2023',
     title: 'Open Source Contributor',
     description: 'Started contributing to major open-source projects.',
-    color: 'acid',
+    color: 'currentColor',
   },
   {
     year: '2022',
     title: 'B.Tech Computer Science',
     description: 'Enrolled in B.Tech program, began learning web development.',
-    color: 'violet',
+    color: 'currentColor',
   },
 ];
 
-const colorClasses: Record<string, string> = {
-  electric: 'text-electric border-electric',
-  coral: 'text-coral border-coral',
-  acid: 'text-acid border-acid',
-  violet: 'text-violet border-violet',
-};
-
 export const Journey = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { ref, isInView } = useInView({ threshold: 0.1 });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -54,17 +47,15 @@ export const Journey = () => {
       className="w-full flex items-center bg-transparent overflow-hidden py-20"
     >
       <div
-        ref={ref as React.RefObject<HTMLDivElement>}
+        ref={ref}
         className="w-full px-6 lg:px-12"
       >
         {/* Section Header */}
         <div className="mb-20">
-          <RevealText>
-            <h2 className="section-title">PATH</h2>
-          </RevealText>
-          <RevealText>
-            <h2 className="section-title-filled">PATH</h2>
-          </RevealText>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold leading-[0.9] tracking-tight">
+            <RevealText className="text-foreground/20">Our</RevealText>
+            <RevealText className="text-foreground">Journey</RevealText>
+          </h2>
         </div>
 
         {/* Timeline */}
@@ -72,7 +63,7 @@ export const Journey = () => {
           {/* Animated Line */}
           <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[4px] bg-foreground/5 md:-translate-x-1/2 overflow-hidden rounded-full">
             <motion.div
-              className="w-full bg-gradient-to-b from-electric via-coral to-violet shadow-[0_0_20px_hsl(var(--primary))]"
+              className="w-full bg-foreground shadow-[0_0_20px_hsl(var(--foreground)/0.2)]"
               style={{ height: lineHeight }}
             />
           </div>
@@ -94,13 +85,14 @@ export const Journey = () => {
                     initial={{ scale: 0 }}
                     animate={isInView ? { scale: 1 } : {}}
                     transition={{ duration: 0.4, delay: index * 0.15 + 0.3 }}
-                    className={`timeline-node border-2 ${colorClasses[item.color]} bg-background`}
+                    className="w-4 h-4 rounded-full border-2 bg-background"
+                    style={{ borderColor: item.color }}
                   />
                 </div>
 
                 {/* Content */}
                 <div className={`md:w-1/2 pl-12 md:pl-0 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
-                  <span className={`text-3xl md:text-4xl font-extrabold ${colorClasses[item.color].split(' ')[0]}`}>
+                  <span className="text-3xl md:text-4xl font-extrabold" style={{ color: item.color }}>
                     {item.year}
                   </span>
                   <h3 className="text-2xl md:text-3xl font-bold text-foreground mt-2 mb-3">
